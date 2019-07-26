@@ -24,5 +24,8 @@ class ShoppingListController {
         }
     }
     
+    init() {
+        loadShoppingList()
+    }
     
 }

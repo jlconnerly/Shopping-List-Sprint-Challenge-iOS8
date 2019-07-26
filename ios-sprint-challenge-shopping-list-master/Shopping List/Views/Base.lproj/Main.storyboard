@@ -38,16 +38,20 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="dVm-Ht-cxj">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GW8-88-y28">
-                                                            <rect key="frame" x="34" y="0.0" width="82.5" height="37.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Not Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GW8-88-y28">
+                                                            <rect key="frame" x="34" y="0.0" width="82.5" height="55.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p5C-8z-Mgj">
-                                                            <rect key="frame" x="4" y="44.5" width="142" height="128"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="p5C-8z-Mgj">
+                                                            <rect key="frame" x="20" y="62.5" width="110" height="110"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="p5C-8z-Mgj" secondAttribute="height" multiplier="1:1" id="NQJ-Tl-s9j"/>
+                                                                <constraint firstAttribute="height" constant="110" id="fUu-ww-Uja"/>
+                                                            </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popcorn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAO-MU-sQt">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Popcorn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAO-MU-sQt">
                                                             <rect key="frame" x="43" y="179.5" width="64.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -72,6 +76,11 @@
                                     <constraint firstAttribute="bottom" secondItem="3tq-RW-KMw" secondAttribute="bottom" id="g8N-BD-fYh"/>
                                     <constraint firstItem="3tq-RW-KMw" firstAttribute="top" secondItem="frJ-VV-qdG" secondAttribute="top" id="nXS-7z-wTF"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="addedLabel" destination="GW8-88-y28" id="KBI-Qh-NOy"/>
+                                    <outlet property="itemImageView" destination="p5C-8z-Mgj" id="19Q-5K-Nan"/>
+                                    <outlet property="itemNameLabel" destination="lAO-MU-sQt" id="qIw-v6-f2b"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -89,7 +98,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAM-gE-UFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1164" y="260"/>
+            <point key="canvasLocation" x="1163.768115942029" y="259.82142857142856"/>
         </scene>
         <!--Add Shopping Item View Controller-->
         <scene sceneID="ZEC-dP-J1A">
@@ -123,6 +132,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhT-fZ-7Ka">
                                         <rect key="frame" x="0.0" y="92" width="374" height="30"/>
                                         <state key="normal" title="Send Order"/>
+                                        <connections>
+                                            <action selector="sendOrderButtonTapped:" destination="kOS-pa-fJo" eventType="touchUpInside" id="c7L-ej-QgH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -138,6 +150,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zqr-rn-rEO"/>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="CMT-EG-9Wh" id="8yX-Vb-uHg"/>
+                        <outlet property="itemCountLabel" destination="HzW-Ok-ogr" id="mIJ-JI-WxP"/>
+                        <outlet property="nameTextField" destination="DAo-NT-PaG" id="UcV-3M-zoJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1m-oL-XsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

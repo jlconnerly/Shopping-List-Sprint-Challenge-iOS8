@@ -9,6 +9,15 @@
 import UIKit
 
 class AddShoppingItemViewController: UIViewController {
+    
+    //
+    // MARK: - IBOutlets and Properties
+    //
+    
+    @IBOutlet weak var itemCountLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +25,13 @@ class AddShoppingItemViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //
+    // MARK: - IBActions and Methods
+    //
 
+    @IBAction func sendOrderButtonTapped(_ sender: UIButton) {
+    }
+    
     /*
     // MARK: - Navigation
 

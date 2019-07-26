@@ -10,4 +10,35 @@ import UIKit
 
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
+    //
+    // MARK: - IBOutlets and Properties
+    //
+    
+    @IBOutlet weak var addedLabel: UILabel!
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var itemNameLabel: UILabel!
+    
+    var shoppingItem: ShoppingItem? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    //
+    // MARK: - Methods
+    //
+    
+    func updateViews() {
+        guard let shoppingItem = shoppingItem else { return }
+        let photoData = shoppingItem.imageData
+        if shoppingItem.added == true {
+            addedLabel.text = "Added"
+        }else {
+            addedLabel.text = "Not Added"
+        }
+        itemImageView.image = UIImage(data: photoData)
+        itemNameLabel.text = shoppingItem.name
+    }
+    
+    
 }
