@@ -77,7 +77,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         }else {
             userDefaults.set(false, forKey: AddedHelper.addedKey)
         }
-        print("tap")
+        shoppingListController.saveToPersistantStore()
     }
     
     /*

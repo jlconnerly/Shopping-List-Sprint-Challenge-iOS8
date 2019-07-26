@@ -17,6 +17,8 @@ class ShoppingListController {
     var shoppingList: [ShoppingItem] = []
     
     
+    
+    
     func loadShoppingList() {
         for item in itemNames {
             guard let image = UIImage(named: item),
@@ -24,6 +26,7 @@ class ShoppingListController {
             
             let shoppingItem = ShoppingItem(name: item, imageData: imageData, added: false)
             shoppingList.append(shoppingItem)
+            saveToPersistantStore()
         }
     }
     
@@ -38,6 +41,44 @@ class ShoppingListController {
     
     init() {
         loadShoppingList()
+        loadFromPersistantStore()
+    }
+    
+    //
+    // MARK: - PERSISTANCE
+    //
+    
+    private var persistantFileURL: URL? {
+        let fm = FileManager.default
+        guard let dir = fm.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        return dir.appendingPathComponent("shoppinglist.plist")
+    }
+    
+    func saveToPersistantStore() {
+        guard let url = persistantFileURL else { return }
+        
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(shoppingList)
+            try data.write(to: url)
+        }catch {
+            print("error saving shoppingList data: \(error)")
+        }
+    }
+    
+    func loadFromPersistantStore() {
+        let fm = FileManager.default
+        guard let url = persistantFileURL,
+            fm.fileExists(atPath: url.path) else { return }
+        
+        do {
+            let decoder = PropertyListDecoder()
+            let data = try Data(contentsOf: url)
+            shoppingList = try decoder.decode([ShoppingItem].self, from: data)
+            
+        }catch{
+            print("Error loading shoppingList: \(error)")
+        }
     }
     
 }
