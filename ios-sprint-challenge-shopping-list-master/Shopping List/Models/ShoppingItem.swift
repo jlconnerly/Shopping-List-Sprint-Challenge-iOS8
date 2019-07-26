@@ -11,9 +11,9 @@ import Foundation
 class ShoppingItem: Codable {
     var name: String
     var imageData: Data
-    var added: Bool
+    var added: Bool?
     
-    init(name: String, imageData: Data, added: Bool) {
+    init(name: String, imageData: Data) {
         self.name = name
         self.imageData = imageData
         self.added = false

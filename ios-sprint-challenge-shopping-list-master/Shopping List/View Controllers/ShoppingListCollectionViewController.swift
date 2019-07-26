@@ -19,6 +19,13 @@ class ShoppingListCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        shoppingListController.loadFromPersistantStore()
+        collectionView?.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        shoppingListController.loadFromPersistantStore()
         collectionView?.reloadData()
     }
     
@@ -78,7 +85,9 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             userDefaults.set(false, forKey: AddedHelper.addedKey)
         }
         shoppingListController.saveToPersistantStore()
+        print("tap")
     }
+    
     
     /*
     // Uncomment this method to specify if the specified item should be selected

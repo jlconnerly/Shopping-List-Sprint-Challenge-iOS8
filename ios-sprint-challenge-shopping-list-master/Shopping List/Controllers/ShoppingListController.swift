@@ -14,6 +14,7 @@ class ShoppingListController {
     
     
     var itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    var initList: [ShoppingItem] = []
     var shoppingList: [ShoppingItem] = []
     
     
@@ -24,20 +25,19 @@ class ShoppingListController {
             guard let image = UIImage(named: item),
                   let imageData = UIImagePNGRepresentation(image) else { return }
             
-            let shoppingItem = ShoppingItem(name: item, imageData: imageData, added: false)
-            shoppingList.append(shoppingItem)
-            saveToPersistantStore()
+            let shoppingItem = ShoppingItem(name: item, imageData: imageData)
+            initList.append(shoppingItem)
         }
     }
     
     
     
     func toggleAdded(item: ShoppingItem) {
-        item.added.toggle()
+        if item.added != nil {
+            item.added?.toggle()
+        }
+        saveToPersistantStore()
     }
-    
-    
-    
     
     init() {
         loadShoppingList()
