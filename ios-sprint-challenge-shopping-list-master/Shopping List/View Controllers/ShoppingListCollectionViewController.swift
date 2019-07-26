@@ -74,6 +74,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     //
     // MARK: UICollectionViewDelegate
     //
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let userDefaults = UserDefaults.standard
         let shoppingItem = shoppingListController.shoppingList[indexPath.item]
@@ -85,7 +86,7 @@ class ShoppingListCollectionViewController: UICollectionViewController {
             userDefaults.set(false, forKey: AddedHelper.addedKey)
         }
         shoppingListController.saveToPersistantStore()
-        print("tap")
+        
     }
     
     
