@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ShoppingItemCollectionViewCell: UICollectionViewCell {
     
     //
@@ -24,6 +25,7 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
     //
     // MARK: - Methods
     //
@@ -31,13 +33,16 @@ class ShoppingItemCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let shoppingItem = shoppingItem else { return }
         let photoData = shoppingItem.imageData
+    
+        itemImageView.image = UIImage(data: photoData)
+        itemNameLabel.text = shoppingItem.name
+        
+        
         if shoppingItem.added == true {
             addedLabel.text = "Added"
         }else {
             addedLabel.text = "Not Added"
         }
-        itemImageView.image = UIImage(data: photoData)
-        itemNameLabel.text = shoppingItem.name
     }
     
     

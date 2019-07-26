@@ -18,11 +18,12 @@ class AddShoppingItemViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     
+    var shoppingListController: ShoppingListController?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     //
@@ -30,6 +31,24 @@ class AddShoppingItemViewController: UIViewController {
     //
 
     @IBAction func sendOrderButtonTapped(_ sender: UIButton) {
+        guard let userName = nameTextField.text,
+              !userName.isEmpty,
+              let userAddress = addressTextField.text,
+              !userAddress.isEmpty else { return }
+        let alert = UIAlertController(title: "\(userName)", message: "Your order will be delivered to \(userAddress) in 15 minutes!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Awesome!", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func updateViews() {
+        guard let shoppingController = shoppingListController else { return }
+        var itemCount = 0
+        for shoppingItem in shoppingController.shoppingList {
+            if shoppingItem.added == true {
+                itemCount += 1
+            }
+        }
+        itemCountLabel.text = String("You have \(itemCount) item(s) in your cart.")
     }
     
     /*

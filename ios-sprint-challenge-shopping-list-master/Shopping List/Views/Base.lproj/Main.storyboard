@@ -91,7 +91,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="xQO-Pn-F2r">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="I4C-Q7-F9d">
                             <connections>
-                                <segue destination="kOS-pa-fJo" kind="show" id="L1L-KO-YG9"/>
+                                <segue destination="kOS-pa-fJo" kind="show" identifier="ShowListSegue" id="L1L-KO-YG9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -108,7 +108,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 3 item(s) in your shopping list." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzW-Ok-ogr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 0 item(s) in your shopping list." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzW-Ok-ogr">
                                 <rect key="frame" x="20" y="160" width="374" height="48"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>

@@ -21,18 +21,30 @@ class ShoppingListCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         collectionView?.reloadData()
     }
+    
+    //
+    // MARK: - Methods
+    //
+    
+    func toggleAdded() {
+        guard let selection = addedHelper.added else { return }
+        
+        if selection == true {
+            
+        }
+    }
 
-    /*
+
     //
     // MARK: - Navigation
     //
      
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        guard let addShoppingVC = segue.destination as? AddShoppingItemViewController else { return }
+        addShoppingVC.shoppingListController = shoppingListController
     }
-    */
+
     
     //
     // MARK: UICollectionViewDataSource
@@ -49,9 +61,25 @@ class ShoppingListCollectionViewController: UICollectionViewController {
     
         return cell
     }
-
+    
+    
+    
+    //
     // MARK: UICollectionViewDelegate
-
+    //
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let userDefaults = UserDefaults.standard
+        let shoppingItem = shoppingListController.shoppingList[indexPath.item]
+        shoppingListController.toggleAdded(item: shoppingItem)
+        collectionView.reloadData()
+        if shoppingListController.shoppingList[indexPath.item].added == true {
+            userDefaults.set(true, forKey: AddedHelper.addedKey)
+        }else {
+            userDefaults.set(false, forKey: AddedHelper.addedKey)
+        }
+        print("tap")
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

@@ -11,8 +11,11 @@ import UIKit
 
 class ShoppingListController {
     
-    let itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
+    
+    
+    var itemNames = ["Apple", "Grapes", "Milk", "Muffin", "Popcorn", "Soda", "Strawberries"]
     var shoppingList: [ShoppingItem] = []
+    
     
     func loadShoppingList() {
         for item in itemNames {
@@ -23,6 +26,15 @@ class ShoppingListController {
             shoppingList.append(shoppingItem)
         }
     }
+    
+    
+    
+    func toggleAdded(item: ShoppingItem) {
+        item.added.toggle()
+    }
+    
+    
+    
     
     init() {
         loadShoppingList()
